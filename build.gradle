@@ -105,5 +105,5 @@ bintray {
         desc = 'Gradle plugins for interacting with the Bugsense and Phraseapp APIs'
         licenses = ['Apache-2.0']
     }
-    dryRun = true
+    dryRun = false
 }
