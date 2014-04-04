@@ -18,9 +18,10 @@ class BugsensePlugin implements Plugin<Project> {
                 if (variant.proguard) {
                     def task = project.tasks.create("bugsenseUpload${variant.name.capitalize()}", BugsenseTask)
                     task.configure {
+                        def bugsense = project.extensions.getByType(BugsensePluginExtension)
                         mappingFile new File("${project.buildDir}/proguard/${variant.dirName}/mapping.txt")
-                        apiKey project.bugsense.apiKey
-                        token project.bugsense.token
+                        apiKey bugsense.apiKey
+                        token bugsense.token
                         appVersion variant.versionName
                     }
                     task.description = 'Uploads proguard symbols from the ' + variant.name.capitalize() + ' build to Bugsense.'

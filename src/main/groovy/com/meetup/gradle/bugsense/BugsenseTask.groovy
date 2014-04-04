@@ -1,9 +1,7 @@
 package com.meetup.gradle.bugsense
 
+import com.meetup.gradle.util.Util
 import groovyx.net.http.HTTPBuilder
-import org.apache.http.entity.mime.MultipartEntity
-import org.apache.http.entity.mime.content.FileBody
-import org.apache.http.entity.mime.content.StringBody
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputFile
@@ -32,10 +30,10 @@ class BugsenseTask extends DefaultTask {
             uri.path = "/api/v1/project/${apiKey}/mappings.json"
             headers.'X-BugSense-Auth-Token' = token
             requestContentType = 'multipart/form-data'
-            MultipartEntity entity = new MultipartEntity()
-            entity.addPart('app_version', new StringBody(appVersion))
-            entity.addPart('file', new FileBody(mappingFile))
-            req.entity = entity
+            req.entity = Util.makeEntity([
+                app_version: appVersion,
+                file: mappingFile
+            ])
         }
     }
 }
