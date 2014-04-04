@@ -25,6 +25,8 @@ buildscript {
 }
 
 apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+apply plugin: 'bintray'
 
 repositories {
     mavenCentral()
@@ -38,9 +40,6 @@ dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.3.3'
 }
 
-apply plugin: 'maven-publish'
-apply plugin: 'bintray'
-
 group = 'com.meetup.gradle'
 version = '1.0'
 
@@ -50,6 +49,7 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 }
 
 artifacts {
+    archives jar
     archives sourcesJar
 }
 
@@ -61,11 +61,42 @@ publishing {
             artifact sourcesJar {
                 classifier "sources"
             }
+
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name 'api-gradle-plugins'
+                    description 'Gradle plugins for interacting with the Bugsense and Phraseapp APIs'
+                    url 'https://github.com/meetup/api-gradle-plugins'
+                    inceptionYear '2014'
+                    licenses {
+                        scm {
+                            url 'https://github.com/meetup/api-gradle-plugins'
+                            connection 'scm:git:https://github.com/meetup/api-gradle-plugins.git'
+                            developerConnection 'scm:git:ssh://git@github.com:meetup/api-gradle-plugins.git'
+                        }
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/license/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                        developers {
+                            developer {
+                                id 'mlc'
+                                name 'Mike Castleman'
+                                email 'mlc@meetup.com'
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 bintray {
+    user = bintrayUser
+    key = bintrayKey
     publications = ['mavenJava']
     pkg {
         repo = 'maven'
@@ -74,4 +105,5 @@ bintray {
         desc = 'Gradle plugins for interacting with the Bugsense and Phraseapp APIs'
         licenses = ['Apache-2.0']
     }
+    dryRun = true
 }
