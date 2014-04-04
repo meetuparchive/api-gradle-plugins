@@ -30,5 +30,5 @@ dependencies {
 
 apply plugin: 'maven'
 
-group = 'com.meetup'
+group = 'com.meetup.gradle'
 version = '1.0-SNAPSHOT'

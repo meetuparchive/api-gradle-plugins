@@ -16,7 +16,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:0.9.2'
-        classpath 'com.meetup:api-gradle-plugins:1.0'
+        classpath 'com.meetup.gradle:api-gradle-plugins:1.0'
     }
 }
 
