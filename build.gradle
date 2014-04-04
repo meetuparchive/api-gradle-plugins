@@ -100,7 +100,7 @@ bintray {
     publications = ['mavenJava']
     pkg {
         repo = 'maven'
-        userOrg = 'meetup'
+        // userOrg = 'meetup'
         name = 'api-gradle-plugins'
         desc = 'Gradle plugins for interacting with the Bugsense and Phraseapp APIs'
         licenses = ['Apache-2.0']

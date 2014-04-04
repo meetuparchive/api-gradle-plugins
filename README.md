@@ -12,6 +12,7 @@ In your build script:
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'https://dl.bintray.com/meetup/maven' }
     }
 
     dependencies {
