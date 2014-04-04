@@ -57,13 +57,13 @@ You can automatically upload your source language's `strings.xml` file to [Phras
 apply plugin: 'phraseapp-android'
 
 phraseapp {
-    authToken: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' // required! from the project settings page
-    mainLocale: 'en-US' // optional
-    mainFile: 'values/strings.xml' // optional, location within the `res` folder of your source strings in the main locale
-    updateTranslations: false // optional, if all translations in the main locale should be updated on upload
-    skipUnverification: false // optional, controls skipping "unverification" on upload
-    skipUploadTags: false // optional, controls skipping automatic creation of an upload tag
-    otherLocales: 'll-rr',.... // optional, default is all locales inside phraseapp except the main locale
+    authToken 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' // required! from the project settings page
+    mainLocale 'en-US' // optional
+    mainFile 'values/strings.xml' // optional, location within the `res` folder of your source strings in the main locale
+    updateTranslations false // optional, if all translations in the main locale should be updated on upload
+    skipUnverification false // optional, controls skipping "unverification" on upload
+    skipUploadTags false // optional, controls skipping automatic creation of an upload tag
+    otherLocales 'll-rr',.... // optional, default is all locales inside phraseapp except the main locale
 }
 ```
 
