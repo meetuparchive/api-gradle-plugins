@@ -41,7 +41,7 @@ dependencies {
 }
 
 group = 'com.meetup.gradle'
-version = '1.1-SNAPSHOT'
+version = '1.2'
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
@@ -105,5 +105,5 @@ bintray {
         desc = 'Gradle plugins for interacting with the Bugsense and Phraseapp APIs'
         licenses = ['Apache-2.0']
     }
-    dryRun = true
+    dryRun = false
 }
