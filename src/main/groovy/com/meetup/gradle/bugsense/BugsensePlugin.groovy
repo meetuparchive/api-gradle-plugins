@@ -31,7 +31,7 @@ class BugsensePlugin implements Plugin<Project> {
         project.extensions.create("bugsense", BugsensePluginExtension)
         project.afterEvaluate {
             project.android.applicationVariants.all { ApplicationVariant variant ->
-                if (variant.proguard) {
+                if (variant.obfuscation) {
                     def task = project.tasks.create("bugsenseUpload${variant.name.capitalize()}", BugsenseTask)
                     task.configure {
                         def bugsense = project.extensions.getByType(BugsensePluginExtension)
@@ -41,7 +41,7 @@ class BugsensePlugin implements Plugin<Project> {
                         appVersion variant.versionName
                     }
                     task.description = 'Uploads proguard symbols from the ' + variant.name.capitalize() + ' build to Bugsense.'
-                    task.dependsOn variant.proguard
+                    task.dependsOn variant.obfuscation
                 }
             }
         }
