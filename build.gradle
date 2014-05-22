@@ -70,22 +70,22 @@ publishing {
                     url 'https://github.com/meetup/api-gradle-plugins'
                     inceptionYear '2014'
                     licenses {
-                        scm {
-                            url 'https://github.com/meetup/api-gradle-plugins'
-                            connection 'scm:git:https://github.com/meetup/api-gradle-plugins.git'
-                            developerConnection 'scm:git:ssh://git@github.com:meetup/api-gradle-plugins.git'
-                        }
                         license {
                             name 'The Apache Software License, Version 2.0'
                             url 'http://www.apache.org/license/LICENSE-2.0.txt'
                             distribution 'repo'
                         }
-                        developers {
-                            developer {
-                                id 'mlc'
-                                name 'Mike Castleman'
-                                email 'mlc@meetup.com'
-                            }
+                    }
+                    scm {
+                        url 'https://github.com/meetup/api-gradle-plugins'
+                        connection 'scm:git:https://github.com/meetup/api-gradle-plugins.git'
+                        developerConnection 'scm:git:ssh://git@github.com:meetup/api-gradle-plugins.git'
+                    }
+                    developers {
+                        developer {
+                            id 'mlc'
+                            name 'Mike Castleman'
+                            email 'mlc@meetup.com'
                         }
                     }
                 }
